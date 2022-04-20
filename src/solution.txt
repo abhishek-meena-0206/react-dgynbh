@@ -1,0 +1,60 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<map>
+#include<queue>
+#include<algorithm>
+using namespace std;
+
+bool cmp(pair<int,int>a,pair<int,int>b){
+    if(a.first>b.first){
+        return true;
+    }
+    
+    if(a.first==b.first){
+        
+        if(a.second>b.second){
+            return false;
+        }
+        else{
+            return true;
+        }
+        
+    }
+    return false;
+}
+int main()
+{
+    int n=2;
+    string s="accccbbbbaaaadddd";
+    
+    map<char,int>mp;
+    for(int i=0;i<s.size();i++){
+        
+        mp[s[i]]++;
+    }
+    
+    vector<pair<int,char>>v;
+    
+    for(auto it =mp.begin();it!=mp.end();it++){
+       // cout<<it->first<<" "<<it->second<<endl;
+        v.push_back(make_pair(it->second,it->first));
+        
+    }
+    
+    
+   sort(v.begin(),v.end(),cmp);
+ 
+for(int i=0;i<n;i++){
+    cout<<v[i].first<<" "<<v[i].second<<endl;
+}
+    
+
+    return 0;
+}
